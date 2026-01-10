@@ -1,0 +1,19 @@
+php_flag  display_errors 1
+php_flag  display_startup_errors 1
+php_value  error_reporting 2047
+
+Options +SymLinksIfOwnerMatch
+Options -Indexes
+DirectoryIndex index.php
+AddDefaultCharset UTF-8
+
+RewriteEngine On
+
+# добавляем закрывающий слеш
+RewriteCond %{REQUEST_URI} ^(.*/[^/\.]+)$
+RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1/ [R=301,L]
+
+# ЧПУ
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.php [QSA,L]

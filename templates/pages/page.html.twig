@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="{{ seo_description }}">
+    <meta name="keywords" content="{{ seo_keywords }}">
+    <title>{{seo_title}}</title>
+</head>
+<body>
+    <h1>{{ pagetitle }}</h1>
+    <h2>{{ description }}</h2>
+    {% if image %}
+        <img src="{{ image }}" alt="{{ pagetitle | striptags }}">
+    {% endif %}
+    <main>
+        <div class="page_content">
+            {{ content | raw }}
+        </div>
+    </main>
+</body>
+</html>

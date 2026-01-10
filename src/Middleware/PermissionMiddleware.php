@@ -22,12 +22,12 @@ class PermissionMiddleware
         //return $handler->handle($request);
 
         // before
-        $response = $handler->handle($request);
+        /*$response = $handler->handle($request);
         $existingContent = (string) $response->getBody();
 
         $response = new Response();
         $response->getBody()->write('BEFORE Middleware ' . $existingContent);
-        return $response;
+        return $response;*/
 
         // after
         /*$response = $handler->handle($request);

@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 use DI\ContainerBuilder;
 use Slim\App;
 

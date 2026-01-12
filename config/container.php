@@ -3,6 +3,7 @@
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Slim\App;
+use Slim\Flash\Messages;
 use Slim\Factory\AppFactory;
 use Slim\Middleware\ErrorMiddleware;
 use Illuminate\Database\Capsule\Manager;
@@ -12,14 +13,20 @@ use DebugBar\StandardDebugBar;
 use \Gumlet\ImageResize;
 
 return [
+    // настройки приложения
     'settings' => function () {
         return require __DIR__ . '/settings.php';
     },
 
+    // объект приложения из контейнера
     App::class => function (ContainerInterface $container) {
         AppFactory::setContainer($container);
-
         return AppFactory::create();
+    },
+
+    // Flash-сообщения
+    'Flash' => function () {
+        return new Messages();
     },
 
     ResponseFactoryInterface::class => function (ContainerInterface $container) {
@@ -39,7 +46,7 @@ return [
         );
     },*/
 
-    // Service factory for the ORM
+    // Eloquent ORM
     Manager::class => function (ContainerInterface $container) {
         $capsule = new Manager;
         $capsule->addConnection($container->get('settings')['db']);

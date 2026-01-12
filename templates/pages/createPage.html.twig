@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="{{ seo_description }}">
+    <meta name="keywords" content="{{ seo_keywords }}">
+    <title>{{seo_title}}</title>
+
+    <!--link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400"-->
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="/assets/css/tooplate-style.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body class="loaded">
+    <main class="tm-main">
+
+        <div class="tm-welcome-section" style="background-image:url(/{{ image }})">
+            <div class="tm-navbar-container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <nav class="navbar navbar-expand-sm {{ uri }}">
+                            <ul class="navbar-nav ml-auto">
+                                <li class="nav-item">
+                                    <a href="/" class="nav-link tm-nav-link tm-text-white{% if uri == '/' %} active{% endif %}">Главная</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/contacts/" class="nav-link tm-nav-link tm-text-white{% if uri == '/contacts/' %} active{% endif %}">Контакты</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center tm-welcome-container">
+                <div class="tm-welcome">
+                    <h1 class="text-uppercase mb-3 tm-site-name">{{ pagetitle }}</h1>
+                    <p class="tm-site-description">{{ description }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="page_content">
+                {% if params.messages %}
+                    <div class="message_wrap{% if params.error_messages %} errors{% endif %}">
+                        {% for message in params.messages %}
+                            <p>{{ message }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+                <form action="" method="post">
+                    <label>
+                        <span>Название:</span>
+                        <input type="text" name="pagetitle" value="{{ params.pagetitle }}">
+                        <span class="form_error">{{ params.formValidate.pagetitle }}</span>
+                    </label>
+                    <label>
+                        <span>Описание:</span>
+                        <input type="text" name="description" value="{{ params.description }}">
+                        <span class="form_error">{{ params.formValidate.description }}</span>
+                    </label>
+                    <label>
+                        <span>Псевдоним:</span>
+                        <input type="text" name="alias" value="{{ params.alias }}">
+                        <span class="form_error">{{ params.formValidate.alias }}</span>
+                    </label>
+
+                    <button type="submit">Сохранить</button>
+                </form>
+            </div>
+        </div>
+    </main>
+    <footer class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <p class="text-center p-4">&copy; <span class="tm-current-year">{{ 'now' | date('Y') }}</span> mg15</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/assets/js/jquery-3.2.1.slim.min.js"></script>
+</body>
+</html>

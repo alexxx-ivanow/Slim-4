@@ -1,3 +1,16 @@
 .page_content {
     margin: 30px auto;
 }
+
+.message_wrap {
+    margin: 20px 0;
+    background-color: #ccc;
+    padding: 12px;
+    color: #289a14;
+    font-size: 12px;
+    line-height: 16px;
+}
+
+.message_wrap.errors {
+    color: brown;
+}

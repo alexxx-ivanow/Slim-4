@@ -10,6 +10,7 @@ use Illuminate\Database\Capsule\Manager;
 use App\Models\Page;
 use \Gumlet\ImageResize;
 use Slim\Routing\RouteContext;
+use App\DTO\GetPageDTO;
 
 final class PageAction
 {
@@ -37,7 +38,10 @@ final class PageAction
 
         // выборка из БД полей страницы
         $page = Page::where('alias', $routeName)->get();
-        $viewData = $page[0]->toArray();
+        $viewDataObj = new GetPageDTO($page[0]->toArray());
+        $viewData = $viewDataObj->getPage();
+
+        //SS($page[0]->toArray());
 
         // подготовка обрезки картинки
         if($viewData['image'] && file_exists($settings['root'] . '/public/' . $settings['image_path'] . $viewData['image'])) {
@@ -59,6 +63,9 @@ final class PageAction
         $viewData['uri'] = $uri->getPath();
 
         //SS($viewData);
+
+        /*$messages = $this->container->get('Flash')->getMessages();
+        SS($messages);*/
 
         // twig-шаблонизатор
         $view = Twig::fromRequest($request);

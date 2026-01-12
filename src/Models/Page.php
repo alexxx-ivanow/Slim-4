@@ -7,4 +7,12 @@ class Page extends Model
 {
     protected $table = 'pages';
     protected $primaryKey = 'id';
+
+    public $timestamps = false;
+
+    protected $fillable = [
+        'pagetitle',
+        'description',
+        'alias'
+    ];
 }

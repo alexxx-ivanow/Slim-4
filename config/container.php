@@ -11,6 +11,7 @@ use Illuminate\Database\Capsule\Manager;
 use DebugBar\StandardDebugBar;
 
 use \Gumlet\ImageResize;
+use App\Services\JwtService;
 
 return [
     // настройки приложения
@@ -55,6 +56,13 @@ return [
         $capsule->bootEloquent();
 
         return $capsule;
-    }
+    },
+
+    // JWT-сервис: читает настройки из settings['jwt']
+    JwtService::class => function (ContainerInterface $container) {
+        $settings = $container->get('settings');
+        return new JwtService($settings['jwt']['secret']);
+    },
+
 
 ];

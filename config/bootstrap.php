@@ -24,6 +24,11 @@ $container = $containerBuilder->build();
 // Создаём экземпляр App
 $app = $container->get(App::class);
 
+// Middleware для разбора JSON-тела запроса
+$app->addBodyParsingMiddleware();
+$app->addRoutingMiddleware();
+
+
 $settings = $container->get('settings');
 
 // Create Twig

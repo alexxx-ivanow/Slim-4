@@ -62,7 +62,7 @@ final class PageAction
         $uri = $request->getUri();
         $viewData['uri'] = $uri->getPath();
 
-        //SS($viewData);
+        // SS($viewData);
 
         /*$messages = $this->container->get('Flash')->getMessages();
         SS($messages);*/

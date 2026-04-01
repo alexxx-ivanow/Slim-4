@@ -5,8 +5,8 @@ class GetPageDTO {
     protected readonly int $id;
     protected readonly string $pagetitle;
     protected readonly string $alias;
-    protected readonly string $description;
-    protected readonly string $content;
+    protected readonly string | null $description;
+    protected readonly string | null $content;
 
     protected readonly string $image;
     protected readonly string $seo_title;

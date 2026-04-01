@@ -1,9 +1,11 @@
 {
     "require": {
         "doctrine/dbal": "2.13.8",
+        "firebase/php-jwt": "^7.0",
         "gumlet/php-image-resize": "^2.1",
         "illuminate/database": "12.0.1",
         "inok/slim-validation4": "^1.0",
+        "jasny/auth": "^2.2",
         "php-di/php-di": "^7.1",
         "selective/basepath": "^2.1",
         "slim/flash": "^0.4.0",

@@ -56,4 +56,17 @@ $settings['ErrorMiddleware'] = [
     'logErrorDetails' => false, // детали в лог
 ];
 
+/**
+* JWT настройки
+* JWT_SECRET в env.php
+*/
+$settings['jwt'] = [
+    'secret' => defined('JWT_SECRET') ? JWT_SECRET : 'change-me-in-env-min-32-chars!!',
+    'algorithm' => 'HS256',
+    'expire' => 3600,
+    'refresh_expire' => 604800,
+    'header' => 'Authorization',
+    'header_prefix' => 'Bearer',
+];
+
 return $settings;
